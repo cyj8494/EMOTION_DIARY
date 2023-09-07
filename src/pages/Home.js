@@ -11,6 +11,11 @@ const Home = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
+        const titleElement = document.getElementsByTagName("title")[0];
+        titleElement.innerHTML = `감정일기장`;
+    }, []);
+
+    useEffect(() => {
         if (diaryList.length >= 1) {
             setData(() => []);
             const firstDay = new Date(

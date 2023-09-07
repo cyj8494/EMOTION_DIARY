@@ -53,32 +53,12 @@ function App() {
       const diaryList = JSON.parse(localData).sort(
           (a,b) => parseInt(b.id) - parseInt(a.id)
       );
-      dataId.current  = parseInt(diaryList[0].id) + 1;
 
-      console.log(diaryList);
-      console.log(dataId);
-
-      dispatch({type:"INIT", data: diaryList});
-    } else {
-      console.log('x');
+      if(diaryList.length >= 1) {
+        dataId.current  = parseInt(diaryList[0].id) + 1;
+        dispatch({type:"INIT", data: diaryList});
+      }
     }
-
-
-
-    /*localStorage.setItem('item1', 10);
-    localStorage.setItem('item2', "20");
-    localStorage.setItem('item3', JSON.stringify({value : 30}));*/
-    /* 객체는 직렬화 해야 보임. */
-    /* 로컬스토리지에는 문자열로 저장이 된다. 따라서 숫자형으로 사용하고 싶다면 꺼내올 때 Json.parse()를 사용해야 한다. */
-
-    /*값 가져오기*/
-    /*        const item1 = localStorage.getItem("item1");
-            const item2 = localStorage.getItem("item2");
-            const item3 = localStorage.getItem("item3");
-
-            console.log({item1, item2, item3});*/
-
-
   }, []);
 
 
